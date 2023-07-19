@@ -57,9 +57,9 @@
 			children = (
 				74E3FF0D2A6802EF00C7D9F8 /* Dex3App.swift */,
 				74E3FF0F2A6802EF00C7D9F8 /* ContentView.swift */,
-				74E3FF112A6802F100C7D9F8 /* Assets.xcassets */,
 				74E3FF162A6802F100C7D9F8 /* Persistence.swift */,
 				74E3FF182A6802F100C7D9F8 /* Dex3.xcdatamodeld */,
+				74E3FF112A6802F100C7D9F8 /* Assets.xcassets */,
 				74E3FF132A6802F100C7D9F8 /* Preview Content */,
 			);
 			path = Dex3;
