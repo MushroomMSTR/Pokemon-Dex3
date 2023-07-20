@@ -57,13 +57,13 @@ struct TempPokemon: Codable {
 		
 		name = try container.decode(String.self, forKey: .name)
 		
-		var decodedTypes: [String] = []
+		let decodedTypes: [String] = []
 		var typesContainer = try container.nestedUnkeyedContainer(forKey: .types)
 		while !typesContainer.isAtEnd {
 			let typesDictionaryContainer = try typesContainer.nestedContainer(keyedBy: PokemonKeys.TypeDictionaryKeys.self)
 			let typeContainer = try typesDictionaryContainer.nestedContainer(keyedBy: PokemonKeys.TypeDictionaryKeys.TypeKeys.self, forKey: .type)
 			
-			let type = try typeContainer.decode(String.self, forKey: .name)
+			_ = try typeContainer.decode(String.self, forKey: .name)
 		}
 		
 		types = decodedTypes

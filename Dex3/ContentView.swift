@@ -15,25 +15,41 @@ struct ContentView: View {
 		sortDescriptors: [NSSortDescriptor(keyPath: \Pokemon.id, ascending: true)],
         animation: .default)
 	private var pokedex: FetchedResults<Pokemon>
-
-    var body: some View {
-        NavigationView {
-            List {
-                ForEach(pokedex) { pokemon in
-                    NavigationLink {
-						Text("\(pokemon.id) : \(pokemon.name!)")
-                    } label: {
-						Text("\(pokemon.id) : \(pokemon.name!)")
-                    }
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-            }
-        }
-    }
+	
+	var body: some View {
+		NavigationStack {
+			List(pokedex) { pokemon in
+				NavigationLink(value: pokemon) {
+					AsyncImage(url: pokemon.sprite) { image in
+						image
+							.resizable()
+							.scaledToFit()
+					} placeholder: {
+						ProgressView()
+					}
+					.frame(width: 100, height: 100)
+					
+					Text(pokemon.name!.capitalized)
+				}
+			}
+			.navigationTitle("Pokedex")
+			.navigationDestination(for: Pokemon.self, destination: { pokemon in
+				AsyncImage(url: pokemon.sprite) { image in
+					image
+						.resizable()
+						.scaledToFit()
+				} placeholder: {
+					ProgressView()
+				}
+				.frame(width: 100, height: 100)
+			})
+			.toolbar {
+				ToolbarItem(placement: .navigationBarTrailing) {
+					EditButton()
+				}
+			}
+		}
+	}
 }
 
 struct ContentView_Previews: PreviewProvider {
