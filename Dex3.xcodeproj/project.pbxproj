@@ -55,7 +55,6 @@
 			children = (
 				74E3FF182A6802F100C7D9F8 /* Dex3.xcdatamodeld */,
 				74473F432A68753C0033B870 /* TempPokemon.swift */,
-				74473F4F2A694A8A0033B870 /* Stats.swift */,
 				74473F4B2A6935C90033B870 /* SamplePokemon.swift */,
 			);
 			path = Models;
@@ -66,6 +65,7 @@
 			children = (
 				74E3FF0F2A6802EF00C7D9F8 /* ContentView.swift */,
 				74473F492A6934070033B870 /* PokemonDetail.swift */,
+				74473F4F2A694A8A0033B870 /* Stats.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
