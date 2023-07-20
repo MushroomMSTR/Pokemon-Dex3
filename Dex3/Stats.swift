@@ -12,7 +12,7 @@ struct Stats: View {
 	
 	@EnvironmentObject var pokemon: Pokemon
 	
-    var body: some View {
+	var body: some View {
 		Chart(pokemon.stats) { stat in
 			BarMark(
 				x: .value("Value", stat.value),
@@ -27,15 +27,15 @@ struct Stats: View {
 		}
 		.frame(height: 200)
 		.padding([.leading, .bottom, .trailing])
-//		.foregroundColor(Color(pokemon.types![0].capitalized))
+		//		.foregroundColor(Color(pokemon.types![0].capitalized))
 		.foregroundColor(.black)
 		.chartXScale(domain: 0...pokemon.highestStat.value+5)
-    }
+	}
 }
 
 struct Stats_Previews: PreviewProvider {
-    static var previews: some View {
-        Stats()
+	static var previews: some View {
+		Stats()
 			.environmentObject(SamplePokemon.samplePokemon)
-    }
+	}
 }

@@ -9,12 +9,14 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
+	@Environment(\.managedObjectContext) private var viewContext
+	
+	@FetchRequest(
 		sortDescriptors: [NSSortDescriptor(keyPath: \Pokemon.id, ascending: true)],
-        animation: .default)
+		animation: .default)
 	private var pokedex: FetchedResults<Pokemon>
+	
+	@StateObject private var pokemonVM = PokemonViewModel(controller: FetchController())
 	
 	var body: some View {
 		NavigationStack {
@@ -47,7 +49,7 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
+	static var previews: some View {
+		ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+	}
 }

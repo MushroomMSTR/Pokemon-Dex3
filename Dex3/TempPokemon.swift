@@ -38,12 +38,12 @@ struct TempPokemon: Codable {
 		enum StatDictionaryKeys: String, CodingKey {
 			case value = "base_stat"
 			case stat
-				
+			
 			enum StatKeys: String, CodingKey {
 				case name
 			}
 		}
-			
+		
 		enum SpriteKeys: String, CodingKey {
 			case sprite = "front_default"
 			case shiny = "front_shiny"

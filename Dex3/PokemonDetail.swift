@@ -13,7 +13,7 @@ struct PokemonDetail: View {
 	@EnvironmentObject var pokemon: Pokemon
 	@State var showShiny = false
 	
-    var body: some View {
+	var body: some View {
 		ScrollView {
 			ZStack {
 				Image("normalgrasselectricpoisonfairy")
@@ -69,12 +69,12 @@ struct PokemonDetail: View {
 				}
 			}
 		}
-    }
+	}
 }
 
 struct PokemonDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        PokemonDetail()
+	static var previews: some View {
+		PokemonDetail()
 			.environmentObject(SamplePokemon.samplePokemon)
-    }
+	}
 }
