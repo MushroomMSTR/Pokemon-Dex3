@@ -19,10 +19,10 @@ class PokemonViewModel: ObservableObject {
 	
 	private let controller: FetchController
 	
-	init(controller: FetchController) {
+	init(controller: FetchController){
 		self.controller = controller
 		
-		Task {
+		Task{
 			await getPokemon()
 		}
 	}
@@ -57,7 +57,6 @@ class PokemonViewModel: ObservableObject {
 				
 				try PersistenceController.shared.container.viewContext.save()
 			}
-			
 			status = .success
 		} catch {
 			status = .failed(error: error)

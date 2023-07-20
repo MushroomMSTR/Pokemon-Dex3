@@ -50,6 +50,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		747661C62A69949500F0F0EA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				74E3FF182A6802F100C7D9F8 /* Dex3.xcdatamodeld */,
+				74473F432A68753C0033B870 /* TempPokemon.swift */,
+				74473F4F2A694A8A0033B870 /* Stats.swift */,
+				74473F4B2A6935C90033B870 /* SamplePokemon.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		747661C72A6994A800F0F0EA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				74E3FF0F2A6802EF00C7D9F8 /* ContentView.swift */,
+				74473F492A6934070033B870 /* PokemonDetail.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		747661C82A6994B000F0F0EA /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				74473F472A692A810033B870 /* PokemonViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		747661C92A6994CC00F0F0EA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				74473F452A6919720033B870 /* FetchController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		747661CA2A6994DC00F0F0EA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				74473F4D2A693C9C0033B870 /* Pokemon+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		747661CB2A69950700F0F0EA /* Utils or Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				74E3FF162A6802F100C7D9F8 /* Persistence.swift */,
+			);
+			path = "Utils or Helpers";
+			sourceTree = "<group>";
+		};
 		74E3FF012A6802EF00C7D9F8 = {
 			isa = PBXGroup;
 			children = (
@@ -69,17 +121,13 @@
 		74E3FF0C2A6802EF00C7D9F8 /* Dex3 */ = {
 			isa = PBXGroup;
 			children = (
+				747661C62A69949500F0F0EA /* Models */,
+				747661C72A6994A800F0F0EA /* Views */,
+				747661C82A6994B000F0F0EA /* View Models */,
+				747661C92A6994CC00F0F0EA /* Controllers */,
+				747661CA2A6994DC00F0F0EA /* Extensions */,
+				747661CB2A69950700F0F0EA /* Utils or Helpers */,
 				74E3FF0D2A6802EF00C7D9F8 /* Dex3App.swift */,
-				74E3FF0F2A6802EF00C7D9F8 /* ContentView.swift */,
-				74473F492A6934070033B870 /* PokemonDetail.swift */,
-				74473F4F2A694A8A0033B870 /* Stats.swift */,
-				74473F4B2A6935C90033B870 /* SamplePokemon.swift */,
-				74473F432A68753C0033B870 /* TempPokemon.swift */,
-				74473F452A6919720033B870 /* FetchController.swift */,
-				74473F472A692A810033B870 /* PokemonViewModel.swift */,
-				74E3FF162A6802F100C7D9F8 /* Persistence.swift */,
-				74473F4D2A693C9C0033B870 /* Pokemon+Extension.swift */,
-				74E3FF182A6802F100C7D9F8 /* Dex3.xcdatamodeld */,
 				74E3FF112A6802F100C7D9F8 /* Assets.xcassets */,
 				74E3FF132A6802F100C7D9F8 /* Preview Content */,
 			);
