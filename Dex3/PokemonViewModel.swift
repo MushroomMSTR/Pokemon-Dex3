@@ -31,11 +31,15 @@ class PokemonViewModel: ObservableObject {
 		status = .fetching
 		
 		do {
-			var pokedex = try await controller.fetchAllPokemon()
+			guard var pokeDex = try await controller.fetchAllPokemon() else {
+				print("using core data pokemon")
+				status = .success
+				return
+			}
 			
-			pokedex.sort { $0.id < $1.id }
+			pokeDex.sort{$0.id < $1.id}
 			
-			for pokemon in pokedex {
+			for pokemon in pokeDex {
 				let newPokemon = Pokemon(context: PersistenceController.shared.container.viewContext)
 				newPokemon.id = Int16(pokemon.id)
 				newPokemon.name = pokemon.name
