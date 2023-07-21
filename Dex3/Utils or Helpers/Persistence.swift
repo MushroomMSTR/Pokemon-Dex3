@@ -56,6 +56,8 @@ struct PersistenceController {
 		// If the inMemory parameter is true, configure the persistent store to be in-memory
 		if inMemory {
 			container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+		} else {
+			container.persistentStoreDescriptions.first!.url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.NS.Dex3Group")!.appending(path: "Dex3.sqlite")
 		}
 		
 		// Load the persistent stores
