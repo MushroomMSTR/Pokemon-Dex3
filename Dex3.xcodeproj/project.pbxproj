@@ -14,6 +14,8 @@
 		74473F4C2A6935C90033B870 /* SamplePokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74473F4B2A6935C90033B870 /* SamplePokemon.swift */; };
 		74473F4E2A693C9C0033B870 /* Pokemon+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74473F4D2A693C9C0033B870 /* Pokemon+Extension.swift */; };
 		74473F502A694A8A0033B870 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74473F4F2A694A8A0033B870 /* Stats.swift */; };
+		747661D02A6AD51700F0F0EA /* FetchedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747661CF2A6AD51700F0F0EA /* FetchedImage.swift */; };
+		747661D22A6AF13C00F0F0EA /* WidgetPokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747661D12A6AF13C00F0F0EA /* WidgetPokemon.swift */; };
 		74E3FF0E2A6802EF00C7D9F8 /* Dex3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E3FF0D2A6802EF00C7D9F8 /* Dex3App.swift */; };
 		74E3FF102A6802EF00C7D9F8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E3FF0F2A6802EF00C7D9F8 /* ContentView.swift */; };
 		74E3FF122A6802F100C7D9F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74E3FF112A6802F100C7D9F8 /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 		74473F4B2A6935C90033B870 /* SamplePokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplePokemon.swift; sourceTree = "<group>"; };
 		74473F4D2A693C9C0033B870 /* Pokemon+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pokemon+Extension.swift"; sourceTree = "<group>"; };
 		74473F4F2A694A8A0033B870 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		747661CF2A6AD51700F0F0EA /* FetchedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedImage.swift; sourceTree = "<group>"; };
+		747661D12A6AF13C00F0F0EA /* WidgetPokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPokemon.swift; sourceTree = "<group>"; };
 		74E3FF0A2A6802EF00C7D9F8 /* Dex3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dex3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74E3FF0D2A6802EF00C7D9F8 /* Dex3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dex3App.swift; sourceTree = "<group>"; };
 		74E3FF0F2A6802EF00C7D9F8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,6 +106,15 @@
 			path = "Utils or Helpers";
 			sourceTree = "<group>";
 		};
+		747661CE2A6AD4EA00F0F0EA /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				747661CF2A6AD51700F0F0EA /* FetchedImage.swift */,
+				747661D12A6AF13C00F0F0EA /* WidgetPokemon.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
 		74E3FF012A6802EF00C7D9F8 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +140,7 @@
 				747661C92A6994CC00F0F0EA /* Controllers */,
 				747661CA2A6994DC00F0F0EA /* Extensions */,
 				747661CB2A69950700F0F0EA /* Utils or Helpers */,
+				747661CE2A6AD4EA00F0F0EA /* Widget */,
 				74E3FF0D2A6802EF00C7D9F8 /* Dex3App.swift */,
 				74E3FF112A6802F100C7D9F8 /* Assets.xcassets */,
 				74E3FF132A6802F100C7D9F8 /* Preview Content */,
@@ -216,6 +230,7 @@
 				74473F502A694A8A0033B870 /* Stats.swift in Sources */,
 				74E3FF1A2A6802F100C7D9F8 /* Dex3.xcdatamodeld in Sources */,
 				74473F4A2A6934080033B870 /* PokemonDetail.swift in Sources */,
+				747661D22A6AF13C00F0F0EA /* WidgetPokemon.swift in Sources */,
 				74473F462A6919720033B870 /* FetchController.swift in Sources */,
 				74473F4C2A6935C90033B870 /* SamplePokemon.swift in Sources */,
 				74473F482A692A810033B870 /* PokemonViewModel.swift in Sources */,
@@ -223,6 +238,7 @@
 				74473F4E2A693C9C0033B870 /* Pokemon+Extension.swift in Sources */,
 				74E3FF102A6802EF00C7D9F8 /* ContentView.swift in Sources */,
 				74E3FF0E2A6802EF00C7D9F8 /* Dex3App.swift in Sources */,
+				747661D02A6AD51700F0F0EA /* FetchedImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
