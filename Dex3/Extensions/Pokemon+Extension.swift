@@ -8,6 +8,9 @@
 import Foundation
 
 extension Pokemon {
+	
+	// MARK: - Background Image Logic
+	// This computed property returns the correct background image name based on the Pokemon's type
 	var background: String {
 		switch self.types![0] {
 		case "normal", "grass", "electric", "poison", "fairy":
@@ -27,6 +30,8 @@ extension Pokemon {
 		}
 	}
 	
+	// MARK: - Stat Array
+	// This computed property returns an array of 'Stat' objects, which are created using the Pokemon's stats
 	var stats: [Stat] {
 		[
 			Stat(id: 1, label: "HP", value: self.hp),
@@ -38,10 +43,14 @@ extension Pokemon {
 		]
 	}
 	
+	// MARK: - Highest Stat
+	// This computed property returns the 'Stat' with the highest value
 	var highestStat: Stat {
 		stats.max { $0.value < $1.value }!
 	}
 	
+	// MARK: - Organize Types
+	// This function reorders the Pokemon's types, if necessary
 	func organizeTypes(){
 		if self.types?.count == 2 && self.types![0] == "normal"{
 			self.types!.swapAt(0, 1)
@@ -49,6 +58,8 @@ extension Pokemon {
 	}
 }
 
+// MARK: - Stat Struct
+// This struct represents a single stat of a Pokemon
 struct Stat: Identifiable {
 	let id: Int
 	let label: String

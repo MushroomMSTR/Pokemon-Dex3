@@ -1,4 +1,3 @@
-//
 //  PokemonDetail.swift
 //  Dex3
 //
@@ -8,20 +7,29 @@
 import SwiftUI
 import CoreData
 
+// MARK: - PokemonDetail
 struct PokemonDetail: View {
 	
+	// Core Data view context
 	@Environment(\.managedObjectContext) private var viewContext
+	// Current Pokemon object
 	@EnvironmentObject var pokemon: Pokemon
+	// State for switching between shiny and regular sprite
 	@State var showShiny = false
 	
+	// MARK: - Body
 	var body: some View {
+		// Scrollable layout for the Pokemon details
 		ScrollView {
+			// Stack for the Pokemon sprite and background
 			ZStack {
+				// Background image
 				Image(pokemon.background)
 					.resizable()
 					.scaledToFit()
 					.shadow(color: .black,radius: 6)
 				
+				// Async image for shiny/regular sprite
 				AsyncImage(url: showShiny ? pokemon.shiny : pokemon.sprite) { image in
 					image
 						.resizable()
@@ -33,7 +41,9 @@ struct PokemonDetail: View {
 				}
 			}
 			
+			// Horizontal stack for the Pokemon types and favorite button
 			HStack {
+				// For each type, display a colored label
 				ForEach(pokemon.types!, id: \.self) { type in
 					Text(type.capitalized)
 						.font(.title2)
@@ -46,6 +56,7 @@ struct PokemonDetail: View {
 				
 				Spacer()
 				
+				// Button for favoriting Pokemon
 				Button{
 					withAnimation {
 						pokemon.favorite.toggle()
@@ -53,7 +64,6 @@ struct PokemonDetail: View {
 						do {
 							try viewContext.save()
 						} catch {
-						 
 							let nsError = error as NSError
 							fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
 						}
@@ -70,16 +80,20 @@ struct PokemonDetail: View {
 			}
 			.padding()
 			
+			// Title for the stats section
 			Text("Stats")
 				.font(.title)
 				.padding(.bottom, -10)
 			
+			// Stats view
 			Stats()
 				.environmentObject(pokemon)
 		}
+		// Navigation title and toolbar
 		.navigationTitle(pokemon.name!.capitalized)
 		.toolbar {
 			ToolbarItem(placement: .navigationBarTrailing) {
+				// Button for toggling shiny/regular sprite
 				Button {
 					showShiny.toggle()
 				} label: {
@@ -95,6 +109,7 @@ struct PokemonDetail: View {
 	}
 }
 
+// MARK: - Previews
 struct PokemonDetail_Previews: PreviewProvider {
 	static var previews: some View {
 		PokemonDetail()

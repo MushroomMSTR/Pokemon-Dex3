@@ -7,19 +7,32 @@
 
 import Foundation
 
+// MARK: - TempPokemon
+
+// This struct is a temporary model for decoding the Pokemon data from the API.
+// It holds all the necessary fields required by the application.
 struct TempPokemon: Codable {
+	
+	// Basic details
 	let id: Int
 	let name: String
 	let types: [String]
-	var hp: Int = 0
-	var attack: Int = 0
-	var defense: Int = 0
-	var specialAttack: Int = 0
-	var specialDefense: Int = 0
-	var speed: Int = 0
+	
+	// Stat attributes
+	var hp = 0
+	var attack = 0
+	var defense = 0
+	var specialAttack = 0
+	var specialDefense = 0
+	var speed = 0
+	
+	// Image URLs
 	let sprite: URL
 	let shiny: URL
 	
+	// MARK: - Coding Keys
+	
+	// The PokemonKeys enumeration is used to map the JSON keys to Swift variable names.
 	enum PokemonKeys: String, CodingKey {
 		case id
 		case name
@@ -27,6 +40,7 @@ struct TempPokemon: Codable {
 		case stats
 		case sprites
 		
+		// Nested keys for the type
 		enum TypeDictionaryKeys: String, CodingKey {
 			case type
 			
@@ -35,29 +49,35 @@ struct TempPokemon: Codable {
 			}
 		}
 		
+		// Nested keys for the stats
 		enum StatDictionaryKeys: String, CodingKey {
 			case value = "base_stat"
 			case stat
-			
+				
 			enum StatKeys: String, CodingKey {
 				case name
 			}
 		}
 		
+		// Nested keys for the sprites
 		enum SpriteKeys: String, CodingKey {
 			case sprite = "front_default"
 			case shiny = "front_shiny"
 		}
 	}
 	
+	// MARK: - Initializer
+	
+	// Custom initializer for decoding from a JSON object.
+	// This initializer manually decodes each nested structure in the JSON.
 	init(from decoder: Decoder) throws {
-		//Main container
 		let container = try decoder.container(keyedBy: PokemonKeys.self)
 		
+		// Decode the simple properties
 		id = try container.decode(Int.self, forKey: .id)
-		
 		name = try container.decode(String.self, forKey: .name)
 		
+		// Decode the array of types
 		var decodedTypes: [String] = []
 		var typesContainer = try container.nestedUnkeyedContainer(forKey: .types)
 		while !typesContainer.isAtEnd {
@@ -70,10 +90,10 @@ struct TempPokemon: Codable {
 		
 		types = decodedTypes
 		
-		var statsContainer = try container.nestedUnkeyedContainer(forKey: .stats)
-		
-		while !statsContainer.isAtEnd {
-			let statsDictionaryContainer = try statsContainer.nestedContainer(keyedBy: PokemonKeys.StatDictionaryKeys.self)
+		// Decode the stats
+		var statusContainer = try container.nestedUnkeyedContainer(forKey: .stats)
+		while !statusContainer.isAtEnd {
+			let statsDictionaryContainer = try statusContainer.nestedContainer(keyedBy: PokemonKeys.StatDictionaryKeys.self)
 			let statContainer = try statsDictionaryContainer.nestedContainer(keyedBy: PokemonKeys.StatDictionaryKeys.StatKeys.self, forKey: .stat)
 			
 			switch try statContainer.decode(String.self, forKey: .name) {
@@ -89,11 +109,11 @@ struct TempPokemon: Codable {
 				specialDefense = try statsDictionaryContainer.decode(Int.self, forKey: .value)
 			case "speed":
 				speed = try statsDictionaryContainer.decode(Int.self, forKey: .value)
-			default:
-				print("It will never get here so...")
+			default: print("Unexpected stat encountered.")
 			}
 		}
 		
+		// Decode the sprite URLs
 		let spriteContainer = try container.nestedContainer(keyedBy: PokemonKeys.SpriteKeys.self, forKey: .sprites)
 		sprite = try spriteContainer.decode(URL.self, forKey: .sprite)
 		shiny = try spriteContainer.decode(URL.self, forKey: .shiny)
