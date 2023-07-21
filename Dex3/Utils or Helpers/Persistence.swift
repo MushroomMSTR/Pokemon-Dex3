@@ -25,7 +25,18 @@ struct PersistenceController {
 		// Setup a sample Pokemon for previews
 		let samplePokemon = Pokemon(context: viewContext)
 		// Assign values to the Pokemon's properties
-		// ...
+		samplePokemon.id = 1
+		samplePokemon.name = "bulbasaur"
+		samplePokemon.types = ["grass", "poison"]
+		samplePokemon.hp = 45
+		samplePokemon.attack = 49
+		samplePokemon.defense = 49
+		samplePokemon.specialAttack = 65
+		samplePokemon.specialDefense = 65
+		samplePokemon.speed = 45
+		samplePokemon.sprite = URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png")
+		samplePokemon.shiny = URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png")
+		samplePokemon.favorite = false
 		
 		// Try to save the context, handle any error
 		do {
