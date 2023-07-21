@@ -11,12 +11,12 @@ struct TempPokemon: Codable {
 	let id: Int
 	let name: String
 	let types: [String]
-	var hp = 0
-	var attack = 0
-	var defense = 0
-	var specialAttack = 0
-	var specialDefense = 0
-	var speed = 0
+	var hp: Int = 0
+	var attack: Int = 0
+	var defense: Int = 0
+	var specialAttack: Int = 0
+	var specialDefense: Int = 0
+	var speed: Int = 0
 	let sprite: URL
 	let shiny: URL
 	
@@ -51,26 +51,29 @@ struct TempPokemon: Codable {
 	}
 	
 	init(from decoder: Decoder) throws {
+		//Main container
 		let container = try decoder.container(keyedBy: PokemonKeys.self)
 		
 		id = try container.decode(Int.self, forKey: .id)
 		
 		name = try container.decode(String.self, forKey: .name)
 		
-		let decodedTypes: [String] = []
+		var decodedTypes: [String] = []
 		var typesContainer = try container.nestedUnkeyedContainer(forKey: .types)
 		while !typesContainer.isAtEnd {
 			let typesDictionaryContainer = try typesContainer.nestedContainer(keyedBy: PokemonKeys.TypeDictionaryKeys.self)
 			let typeContainer = try typesDictionaryContainer.nestedContainer(keyedBy: PokemonKeys.TypeDictionaryKeys.TypeKeys.self, forKey: .type)
 			
-			_ = try typeContainer.decode(String.self, forKey: .name)
+			let type = try typeContainer.decode(String.self, forKey: .name)
+			decodedTypes.append(type)
 		}
 		
 		types = decodedTypes
 		
-		var statusContainer = try container.nestedUnkeyedContainer(forKey: .stats)
-		while !statusContainer.isAtEnd {
-			let statsDictionaryContainer = try statusContainer.nestedContainer(keyedBy: PokemonKeys.StatDictionaryKeys.self)
+		var statsContainer = try container.nestedUnkeyedContainer(forKey: .stats)
+		
+		while !statsContainer.isAtEnd {
+			let statsDictionaryContainer = try statsContainer.nestedContainer(keyedBy: PokemonKeys.StatDictionaryKeys.self)
 			let statContainer = try statsDictionaryContainer.nestedContainer(keyedBy: PokemonKeys.StatDictionaryKeys.StatKeys.self, forKey: .stat)
 			
 			switch try statContainer.decode(String.self, forKey: .name) {
@@ -86,7 +89,8 @@ struct TempPokemon: Codable {
 				specialDefense = try statsDictionaryContainer.decode(Int.self, forKey: .value)
 			case "speed":
 				speed = try statsDictionaryContainer.decode(Int.self, forKey: .value)
-			default: print("It will never get here so...")
+			default:
+				print("It will never get here so...")
 			}
 		}
 		
